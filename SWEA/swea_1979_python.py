@@ -53,3 +53,41 @@ for tc in range(1, tc+1):
 그리고 처음에는 아예 bfs 안에서 열, 행을 같이 처리해주고 싶었는데 그러면 깊이 전달하는 부분에서 너무 꼬여버려서 나눔
 """
 
+"""
+두 번째 풀이
+위의 풀이는 너무 어렵게 생각함
+가로 세로를 일일이 다 체크하기에는 너무 복잡함 차라리 메모리를 조금 더 써서 시간을 줄이는 것이 이득
+-> 배열을 받아서 90도 돌려서 새 배열로 동일한 로직 처리
+"""
+
+tc= int(input())
+for tc in range(1, tc+1):
+    size, length = map(int,input().split())
+    puzzle_row = []
+    puzzle_col = [[] for _ in range(size)]
+    for i in range(size):
+        puzzle_row.append(input().split())
+        for j in range(size):
+            puzzle_col[j].append(puzzle_row[i][j])
+    result = 0
+    for y in range(size):
+        for x in range(size-length+1):
+            startX = x
+            while startX < size and puzzle_row[y][startX] == '1':
+                puzzle_row[y][startX] = '0'
+                startX += 1
+
+            if startX - x == length:
+                result += 1 
+    
+    for y in range(size):
+        for x in range(size-length+1):
+            startX = x
+            while startX < size and puzzle_col[y][startX] == '1':
+                puzzle_col[y][startX] = '0'
+                startX += 1
+
+            if startX - x == length:
+                result += 1 
+
+    print(f"#{tc} {result}")
