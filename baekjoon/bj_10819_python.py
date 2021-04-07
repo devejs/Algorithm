@@ -1,3 +1,8 @@
+"""
+10819. 차이를 최대로
+210406 Solution 
+1. dfs로 완전탐색
+"""
 def dfs(d, v, sum):
     global num, result
     if d == num-1:
