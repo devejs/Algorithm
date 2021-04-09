@@ -23,7 +23,7 @@ map<char, int> res;
 void bfs(int i, int j) {
 	int v = 0;
 	int k = 0;
-	queue<pair<int,int>> q;
+	queue<pair<int,int> > q;
 	q.push(make_pair(i, j));
 	if (mapp[i][j] == 'v') v++;
 	else if(mapp[i][j] == 'k') k++;
